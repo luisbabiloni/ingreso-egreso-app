@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/cdk/overlay-prebuilt.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.info-notification-overlay {
+  color: white;
+  background-color: gray;
+}
+
+.exito-notification-overlay {
+  color: white;
+  background-color: green;
+}
+
+.cuidado-notification-overlay {
+  background-color: yellow;
+}
+
+.error-notification-overlay {
+  color: white;
+  background-color: red;
+}
