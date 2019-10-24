@@ -3,11 +3,18 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+// ngrx
+import { StoreModule } from "@ngrx/store";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { appReducers } from "./app.state";
+// import * as UiReducer from "../app/shared/ui.reducer";
+
 // firebase
 import { AngularFireModule } from "@angular/fire";
-import { environment } from "../environments/environment";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+
+import { environment } from "../environments/environment";
 
 // modules
 import { SharedModule } from "./shared/shared.module";
@@ -27,6 +34,13 @@ import { DetalleComponent } from "./ingreso-egreso/detalle/detalle.component";
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
+
+    // ngrx
+    StoreModule.forRoot(appReducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production // Restrict extension to log-only mode
+    }),
 
     // firebase
     AngularFireModule.initializeApp(environment.firebase),
