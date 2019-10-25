@@ -4,7 +4,7 @@
       <div class="card-body">
         <h4 class="card-title">Detalle de ingreso o gasto</h4>
 
-        <table class="table">
+        <table class="table" *ngFor="let item of items | ordenIngresoGasto">
           <thead>
             <tr>
               <th>Concepto</th>
@@ -16,10 +16,19 @@
 
           <tbody>
             <tr>
-              <td>Concepto</td>
-              <td>Importe</td>
-              <td>Tipo</td>
-              <td>acciones</td>
+              <td>{{ item.concepto }}</td>
+              <td>{{ item.importe | currency:'EUR':true:'1.2-2':'es'}}</td>
+              <td [ngClass]="{
+                'text-success': item.tipo === 'ingreso',
+                'text-danger': item.tipo === 'gasto'}">
+                {{ item.tipo}}
+              </td>
+              <td>
+                <button class="btn btn-danger" (click)="borrarItem(item)">
+                  <i class="fa fa-trash"></i>
+                  Borrar
+                </button>
+              </td>
             </tr>
           </tbody>
 

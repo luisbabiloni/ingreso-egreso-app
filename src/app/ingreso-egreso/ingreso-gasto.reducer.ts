@@ -12,10 +12,10 @@ const estadoInicial: IngresoGastoState = {
 
 const ingresoGastoReducer = createReducer(
   estadoInicial,
-  on(IngresoGastoActions.setItems, state => ({
+  on(IngresoGastoActions.setItems, (state, action) => ({
     ...state,
     items: [
-      ...state.items.map(item => {
+      ...action.items.map(item => {
         return {
           ...item
         };

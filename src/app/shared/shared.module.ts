@@ -1,6 +1,9 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { registerLocaleData } from "@angular/common";
+import localeEs from "@angular/common/locales/eu";
+registerLocaleData(localeEs, "es");
 
 import {
   MatIconModule,
@@ -23,8 +26,19 @@ import { ToastComponent } from "./toast/toast.component";
 
 @NgModule({
   imports: [CommonModule, RouterModule, material],
-  declarations: [FooterComponent, NavbarComponent, SidebarComponent, ToastComponent],
-  exports: [FooterComponent, NavbarComponent, SidebarComponent, ToastComponent, material],
+  declarations: [
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent,
+    ToastComponent
+  ],
+  exports: [
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent,
+    ToastComponent,
+    material
+  ],
   entryComponents: [ToastComponent]
 })
 export class SharedModule {}
