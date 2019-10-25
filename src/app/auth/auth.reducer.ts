@@ -18,6 +18,11 @@ const authReducer = createReducer(
     ...state,
     estaAutenticado: true,
     user: { ...user }
+  })),
+  on(AuthActions.unsetUser, state => ({
+    ...state,
+    estaAutenticado: false,
+    user: null
   }))
 );
 

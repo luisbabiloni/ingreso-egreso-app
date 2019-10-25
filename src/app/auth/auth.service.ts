@@ -96,6 +96,7 @@ export class AuthService {
   }
 
   logout() {
+    this.store.dispatch(AuthActions.unsetUser());
     this.router.navigate(["/login"]);
     this.afAuth.auth.signOut();
   }

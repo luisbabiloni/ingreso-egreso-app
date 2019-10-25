@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { CommonModule, CurrencyPipe } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { registerLocaleData } from "@angular/common";
 import localeEs from "@angular/common/locales/eu";
@@ -31,6 +31,7 @@ import { ToastComponent } from "./toast/toast.component";
     NavbarComponent,
     SidebarComponent,
     ToastComponent
+    // CurrencyPipe
   ],
   exports: [
     FooterComponent,
@@ -39,6 +40,7 @@ import { ToastComponent } from "./toast/toast.component";
     ToastComponent,
     material
   ],
-  entryComponents: [ToastComponent]
+  entryComponents: [ToastComponent],
+  providers: [CurrencyPipe]
 })
 export class SharedModule {}

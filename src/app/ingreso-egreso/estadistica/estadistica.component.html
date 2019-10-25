@@ -77,7 +77,13 @@
           <div class="card-body">
             <h1 class="card-title">Gráfica</h1>
   
-              <!-- gráfica ira aquí -->
+              <ngx-charts-advanced-pie-chart
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [valueFormatting]="formatEuros(ingresos) && formatEuros(gastos)"
+              (select)="onSelect($event)"
+              ></ngx-charts-advanced-pie-chart>
             
           </div>
         </div>

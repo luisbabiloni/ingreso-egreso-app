@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { StoreModule } from "@ngrx/store";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { appReducers } from "./app.state";
-// import * as UiReducer from "../app/shared/ui.reducer";
 
 // firebase
 import { AngularFireModule } from "@angular/fire";
@@ -15,6 +14,9 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { environment } from "../environments/environment";
+
+/** Ngx-Charts */
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 // modules
 import { SharedModule } from "./shared/shared.module";
@@ -44,10 +46,13 @@ import { OrdenIngresoGastoPipe } from "./ingreso-egreso/orden-ingreso-gasto.pipe
       logOnly: environment.production // Restrict extension to log-only mode
     }),
 
-    // firebase
+    /** firebase */
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+
+    /** Ngx-Charts */
+    NgxChartsModule,
 
     SharedModule
   ],

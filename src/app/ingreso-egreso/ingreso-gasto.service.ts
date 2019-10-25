@@ -8,7 +8,7 @@ import { AuthService } from "../auth/auth.service";
 import { User } from "../auth/user.model";
 import { AppState } from "../app.state";
 import { filter, map } from "rxjs/operators";
-import { setItems } from "./ingreso-gasto.actions";
+import { setItems, unsetItems } from "./ingreso-gasto.actions";
 
 @Injectable({
   providedIn: "root"
@@ -58,6 +58,7 @@ export class IngresoGastoService {
   cancelarSubscriptions() {
     this.ingresoGastoListenerSubscription.unsubscribe();
     this.ingresoGastoItemsSubscription.unsubscribe();
+    this.store.dispatch(unsetItems());
   }
 
   crearIngresoGasto(ingresoGasto: IngresoEgreso) {

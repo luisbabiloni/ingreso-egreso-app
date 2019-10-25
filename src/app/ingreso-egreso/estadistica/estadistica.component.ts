@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { CurrencyPipe } from "@angular/common";
 import { Store } from "@ngrx/store";
 import { Subscription } from "rxjs";
 
@@ -19,7 +20,17 @@ export class EstadisticaComponent implements OnInit {
 
   private subscription: Subscription = new Subscription();
 
-  constructor(private store: Store<AppState>) {}
+  /** Ngxs-Charts */
+  single: any[];
+  view: any[] = [700, 400];
+  colorScheme = {
+    domain: ["#5AA454", "#A10A28"]
+  };
+
+  constructor(
+    private store: Store<AppState>,
+    private currencyPipe: CurrencyPipe
+  ) {}
 
   ngOnInit() {
     this.subscription = this.store
@@ -42,5 +53,27 @@ export class EstadisticaComponent implements OnInit {
         this.gastos = item.importe;
       }
     });
+
+    const single = [
+      {
+        name: "Ingresos",
+        value: this.ingresos
+      },
+      {
+        name: "Gastos",
+        value: this.gastos
+      }
+    ];
+
+    this.formatEuros(this.ingresos);
+    Object.assign(this, { single });
+  }
+
+  onSelect(event: any) {
+    console.log(event);
+  }
+
+  formatEuros(val: number) {
+    this.currencyPipe.transform(val, "EUR", true, "1.1-2", "es");
   }
 }
