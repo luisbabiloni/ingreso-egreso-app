@@ -15,28 +15,30 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { environment } from "../environments/environment";
 
-/** Ngx-Charts */
-import { NgxChartsModule } from "@swimlane/ngx-charts";
-
 // modules
 import { SharedModule } from "./shared/shared.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { LoginComponent } from "./auth/login/login.component";
-import { RegisterComponent } from "./auth/register/register.component";
+
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { IngresoEgresoComponent } from "./ingreso-egreso/ingreso-egreso.component";
 import { EstadisticaComponent } from "./ingreso-egreso/estadistica/estadistica.component";
 import { DetalleComponent } from "./ingreso-egreso/detalle/detalle.component";
 import { OrdenIngresoGastoPipe } from "./ingreso-egreso/orden-ingreso-gasto.pipe";
 
+import { AuthModule } from "./auth/auth.module";
+import { LoginComponent } from "./auth/login/login.component";
+import { RegisterComponent } from "./auth/register/register.component";
+
+import { IngresoEgresoModule } from "./ingreso-egreso/ingreso-egreso.module";
+import { DashboardRoutingModule } from "./dashboard/dashboard-routing.module";
+
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule,
     AppRoutingModule,
 
     // ngrx
@@ -51,21 +53,12 @@ import { OrdenIngresoGastoPipe } from "./ingreso-egreso/orden-ingreso-gasto.pipe
     AngularFirestoreModule,
     AngularFireAuthModule,
 
-    /** Ngx-Charts */
-    NgxChartsModule,
+    SharedModule,
+    AuthModule
 
-    SharedModule
+    // DashboardRoutingModule
   ],
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    DashboardComponent,
-    IngresoEgresoComponent,
-    EstadisticaComponent,
-    DetalleComponent,
-    OrdenIngresoGastoPipe
-  ],
+  declarations: [AppComponent, LoginComponent, RegisterComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -6,7 +6,7 @@ import { Subscription } from "rxjs";
 import { IngresoEgreso } from "./ingreso-egreso.model";
 import { IngresoGastoService } from "./ingreso-gasto.service";
 import { ToastService } from "../shared/toast/toast.service";
-import { AppState } from "../app.state";
+import * as ingresoGastoReducer from "./ingreso-gasto.reducer";
 import { activarLoading, desactivarLoading } from "../shared/ui.actions";
 
 @Component({
@@ -24,7 +24,7 @@ export class IngresoEgresoComponent implements OnInit, OnDestroy {
   constructor(
     public ingresoGastoService: IngresoGastoService,
     private toastService: ToastService,
-    private store: Store<AppState>
+    private store: Store<ingresoGastoReducer.AppState>
   ) {}
 
   ngOnInit() {

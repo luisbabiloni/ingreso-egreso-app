@@ -1,16 +1,21 @@
 import * as IngresoGastoActions from "./ingreso-gasto.actions";
 import { IngresoEgreso } from "./ingreso-egreso.model";
 import { createReducer, on, Action } from "@ngrx/store";
+import { AppState } from "../app.state";
 
 export interface IngresoGastoState {
   items: IngresoEgreso[];
+}
+
+export interface AppState extends AppState {
+  ingresoGasto: IngresoEgreso;
 }
 
 const estadoInicial: IngresoGastoState = {
   items: []
 };
 
-const ingresoGastoReducer = createReducer(
+const ingresoGasto = createReducer(
   estadoInicial,
   on(IngresoGastoActions.setItems, (state, action) => ({
     ...state,
@@ -28,6 +33,9 @@ const ingresoGastoReducer = createReducer(
   }))
 );
 
-export function reducer(state: IngresoGastoState | undefined, action: Action) {
-  return ingresoGastoReducer(state, action);
+export function ingresoGastoReducer(
+  state: IngresoGastoState | undefined,
+  action: Action
+) {
+  return ingresoGasto(state, action);
 }

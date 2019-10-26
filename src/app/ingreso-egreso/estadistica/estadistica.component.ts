@@ -3,7 +3,7 @@ import { CurrencyPipe } from "@angular/common";
 import { Store } from "@ngrx/store";
 import { Subscription } from "rxjs";
 
-import { AppState } from "src/app/app.state";
+import * as ingresoGastoReducer from "../ingreso-gasto.reducer";
 import { IngresoEgreso } from "../ingreso-egreso.model";
 
 @Component({
@@ -18,7 +18,7 @@ export class EstadisticaComponent implements OnInit {
   cuantosIngresos: number;
   cuantosGastos: number;
 
-  private subscription: Subscription = new Subscription();
+  subscription: Subscription = new Subscription();
 
   /** Ngxs-Charts */
   single: any[];
@@ -28,7 +28,7 @@ export class EstadisticaComponent implements OnInit {
   };
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<ingresoGastoReducer.AppState>,
     private currencyPipe: CurrencyPipe
   ) {}
 
